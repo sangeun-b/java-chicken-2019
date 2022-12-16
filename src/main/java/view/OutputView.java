@@ -9,7 +9,7 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
-    private static final String START_MESSAGE = "## 메인화면\n+"+ "1 - 주문등록\n" + "2 - 결제하기\n" + "3 - 프로그램 종료";
+    private static final String START_MESSAGE = "## 메인화면\n"+ "1 - 주문등록\n" + "2 - 결제하기\n" + "3 - 프로그램 종료";
 
     public static void printStart(){
         System.out.println(START_MESSAGE);
