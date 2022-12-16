@@ -21,5 +21,6 @@ public class PosController {
     }
     public void run(){
         OutputView.printTables(tables);
+        int tableNumber = inputView.inputTableNumber();
     }
 }
