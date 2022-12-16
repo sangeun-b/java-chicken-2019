@@ -1,5 +1,7 @@
 package domain;
 
+import camp.nextstep.edu.missionutils.Randoms;
+
 public class Menu {
     private final int number;
     private final String name;
@@ -11,6 +13,15 @@ public class Menu {
         this.name = name;
         this.category = category;
         this.price = price;
+    }
+    public int getPrice(){
+        return price;
+    }
+    public int getNumber(){
+        return number;
+    }
+    public String getName(){
+        return name;
     }
 
     @Override
