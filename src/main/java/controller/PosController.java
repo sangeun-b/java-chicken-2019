@@ -47,7 +47,13 @@ public class PosController {
         outputView.printMenus(menus);
         Menu menu = MenuRepository.findMenuByNumber(inputView.inputMenu());
         int menuQuantity = inputView.inputQuantity();
-        orders = OrderRepository.saveOrder(tableNumber,new Order(menu,menuQuantity));
+        if(OrderRepository.checkTotalQuantity(tableNumber,menuQuantity)){
+            orders = OrderRepository.saveOrder(tableNumber,new Order(menu,menuQuantity));
+        }
+        if(!OrderRepository.checkTotalQuantity(tableNumber,menuQuantity)){
+            outputView.printExcessQuantity();
+            start();
+        }
     }
     public void makePayment(){
         outputView.printTables(tables);

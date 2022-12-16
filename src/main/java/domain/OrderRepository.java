@@ -3,6 +3,7 @@ package domain;
 import java.util.*;
 
 public class OrderRepository {
+    private static final int MAX_QUANTITY = 99;
     private static Map<Integer, List<Order>> orders = new HashMap<>();
 
     public static Map<Integer,List<Order>> saveOrder(int tableNumber, Order order) {
@@ -29,6 +30,18 @@ public class OrderRepository {
             orders.put(tableNumber,newOrder);
         }
         return orders;
+    }
+    public static boolean checkTotalQuantity(int tableNumber, int newQuantity){
+
+        int totalQuantity = 0;
+        if(checkExistingTable(tableNumber)!=null) {
+            for (Order order : orders.get(tableNumber)) {
+                totalQuantity += order.getQuantity();
+            }
+            totalQuantity += newQuantity;
+        }
+        if(totalQuantity>99) {return false;}
+        return true;
     }
     public static boolean plusMenuQuantity(List<Order> existingOrders, Order newOrder){
         for(Order order: existingOrders) {
