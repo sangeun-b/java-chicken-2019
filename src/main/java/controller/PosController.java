@@ -15,6 +15,7 @@ public class PosController {
     public static final List<Table> tables = TableRepository.tables();
     public static final List<Menu> menus = MenuRepository.menus();
     public static Map<Integer,List<Order>> orders = new HashMap<>();
+    public static TotalPrice totalPrice = new TotalPrice();
     public void start(){
         outputView.printStart();
         int function = inputView.inputFunction();
@@ -46,5 +47,8 @@ public class PosController {
         outputView.printTotalOrders();
         OrderRepository.printAllOrders(tableNumber);
         int payment = inputView.inputPaymentMethod();
+        outputView.printTotalPrice();
+        System.out.println(totalPrice.calculateTotalPrice(orders.get(tableNumber), payment));
+
     }
 }
