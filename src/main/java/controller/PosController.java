@@ -16,22 +16,30 @@ public class PosController {
     public static final List<Menu> menus = MenuRepository.menus();
     public static Map<Integer,List<Order>> orders = new HashMap<>();
     public static TotalPrice totalPrice = new TotalPrice();
+    public static final int ORDER = 1;
+    public static final int PAY = 2;
+    public static final int QUIT = 3;
+    public static boolean isRunning = true;
+
     public void start(){
-        outputView.printStart();
-        int function = inputView.inputFunction();
-        while(function!=3){
-            run(function);
+        while(isRunning){
+            startMain();
         }
     }
+    public void startMain(){
+        outputView.printStart();
+        int function = inputView.inputFunction();
+        run(function);
+    }
     public void run(int function){
-        if(function==1) {
+        if(function==ORDER) {
             createOrder();
         }
-        if(function==2){
+        if(function==PAY){
             makePayment();
         }
-        start();
-
+        if(function==QUIT)
+            isRunning=false;
     }
     public void createOrder(){
         outputView.printTables(tables);
@@ -48,7 +56,7 @@ public class PosController {
         OrderRepository.printAllOrders(tableNumber);
         int payment = inputView.inputPaymentMethod();
         outputView.printTotalPrice();
-        System.out.println(totalPrice.calculateTotalPrice(orders.get(tableNumber), payment));
+        System.out.println(totalPrice.calculateTotalPrice(orders.get(tableNumber), payment)+"\n");
 
     }
 }

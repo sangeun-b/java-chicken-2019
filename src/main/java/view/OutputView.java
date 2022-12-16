@@ -17,7 +17,7 @@ public class OutputView {
     private static final String START_MESSAGE = "## 메인화면\n"+ "1 - 주문등록\n" + "2 - 결제하기\n" + "3 - 프로그램 종료\n";
     private static final String TABLE_MESSAGE = "\n## 테이블 목록";
     private static final String TOTAL_ORDER_MESSAGE = "## 주문내역\n"+"메뉴 수량 금액";
-    private static final String TOTAL_PRICE_MESSAGE = "## 최종 결제할 금액";
+    private static final String TOTAL_PRICE_MESSAGE = "\n## 최종 결제할 금액";
 
 
     public static void printStart(){
@@ -38,6 +38,7 @@ public class OutputView {
         for (final Menu menu : menus) {
             System.out.println(menu);
         }
+        System.out.println();
     }
 
     private static void printLine(final String line, final int count) {
