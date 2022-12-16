@@ -27,4 +27,10 @@ public class MenuRepository {
                 .findFirst()
                 .orElseThrow();
     }
+    public static Menu findMenuByName(String name){
+        return menus().stream()
+                .filter(menu -> menu.getName()==name)
+                .findFirst()
+                .orElseThrow();
+    }
 }
