@@ -9,14 +9,14 @@ public class OutputView {
     private static final String TOP_LINE = "┌ ─ ┐";
     private static final String TABLE_FORMAT = "| %s |";
     private static final String BOTTOM_LINE = "└ ─ ┘";
-    private static final String START_MESSAGE = "## 메인화면\n"+ "1 - 주문등록\n" + "2 - 결제하기\n" + "3 - 프로그램 종료";
-
+    private static final String START_MESSAGE = "## 메인화면\n"+ "1 - 주문등록\n" + "2 - 결제하기\n" + "3 - 프로그램 종료\n";
+    private static final String TABLE_MESSAGE = "\n## 테이블 목록";
     public static void printStart(){
         System.out.println(START_MESSAGE);
 
     }
     public static void printTables(final List<Table> tables) {
-        System.out.println("## 테이블 목록");
+        System.out.println(TABLE_MESSAGE);
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
