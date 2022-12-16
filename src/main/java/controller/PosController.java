@@ -26,5 +26,6 @@ public class PosController {
         int tableNumber = inputView.inputTableNumber();
         outputView.printMenus(menus);
         int menuNumber = inputView.inputMenu();
+        int menuQuantity = inputView.inputQuantity();
     }
 }
