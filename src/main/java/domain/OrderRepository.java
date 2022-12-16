@@ -16,10 +16,18 @@ public class OrderRepository {
         if(orders.get(tableNumber)==null){
             List<Order> newOrder = new ArrayList<>();
             newOrder.add(order);
-            System.out.println(newOrder.stream().collect(Collectors.toList()));
             orders.put(tableNumber,newOrder);
         }
         return orders;
+    }
+
+    public static void printAllOrders(int tableNumber){
+        List<Order> allOrders = orders.get(tableNumber);
+        for(Order order:allOrders){
+            int total = order.getQuantity()*order.getMenu().getPrice();
+            System.out.println(order.getMenu().getName() +" "+ order.getQuantity() +" "+total);
+        }
+
     }
 
 }
