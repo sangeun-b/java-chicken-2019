@@ -5,7 +5,7 @@ import camp.nextstep.edu.missionutils.Console;
 import org.w3c.dom.ls.LSOutput;
 
 public class InputView {
-    private static final String INPUT_TABLE = "\n## 주문할 테이블을 선택하세요.";
+    private static final String INPUT_TABLE = "## 테이블을 선택하세요.";
     public static final String INPUT_FUNCTION = "## 원하는 기능을 선택하세요.";
     public static final String INPUT_MENU = "## 등록할 메뉴를 선택하세요.";
     public static final String INPUT_QUANTITY = "## 메뉴의 수량을 입력하세요.";
