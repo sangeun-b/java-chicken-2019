@@ -1,5 +1,7 @@
 package controller;
 
+import domain.Menu;
+import domain.MenuRepository;
 import domain.Table;
 import domain.TableRepository;
 import view.InputView;
@@ -11,7 +13,7 @@ public class PosController {
     public static final OutputView outputView = new OutputView();
     public static final InputView inputView = new InputView();
     public static final List<Table> tables = TableRepository.tables();
-
+    public static final List<Menu> menus = MenuRepository.menus();
     public void start(){
         outputView.printStart();
         int function = inputView.inputFunction();
@@ -20,7 +22,8 @@ public class PosController {
         }
     }
     public void run(){
-        OutputView.printTables(tables);
+        outputView.printTables(tables);
         int tableNumber = inputView.inputTableNumber();
+        outputView.printMenus(menus);
     }
 }
