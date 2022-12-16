@@ -43,6 +43,8 @@ public class PosController {
     public void makePayment(){
         outputView.printTables(tables);
         int tableNumber = inputView.inputTableNumber();
+        outputView.printTotalOrders();
         OrderRepository.printAllOrders(tableNumber);
+        int payment = inputView.inputPaymentMethod();
     }
 }
