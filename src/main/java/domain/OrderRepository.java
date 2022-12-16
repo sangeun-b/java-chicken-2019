@@ -1,9 +1,11 @@
 package domain;
 
+import exception.PosException;
+
 import java.util.*;
 
 public class OrderRepository {
-    private static final int MAX_QUANTITY = 99;
+    private static PosException posException = new PosException();
     private static Map<Integer, List<Order>> orders = new HashMap<>();
 
     public static Map<Integer,List<Order>> saveOrder(int tableNumber, Order order) {
@@ -40,7 +42,7 @@ public class OrderRepository {
             }
             totalQuantity += newQuantity;
         }
-        if(totalQuantity>99) {return false;}
+        posException.validQuantity(totalQuantity);
         return true;
     }
     public static boolean plusMenuQuantity(List<Order> existingOrders, Order newOrder){

@@ -18,7 +18,7 @@ public class OutputView {
     private static final String TABLE_MESSAGE = "\n## 테이블 목록";
     private static final String TOTAL_ORDER_MESSAGE = "## 주문내역\n"+"메뉴 수량 금액";
     private static final String TOTAL_PRICE_MESSAGE = "\n## 최종 결제할 금액";
-    private static final String EXCESS_QUANTITY_MESSAGE ="주문 개수를 초과하였습니다. 다시 선택해주세요.";
+
 
 
     public static void printStart(){
@@ -30,7 +30,6 @@ public class OutputView {
         final int size = tables.size();
         printLine(TOP_LINE, size);
         printTableNumbers(tables);
-//        printLine(BOTTOM_LINE, size);
         List<Integer> tableNumbers = Stream.of(1,2,3,5,6,8).collect(Collectors.toList());
         printTableBottom(tableNumbers);
     }
@@ -73,7 +72,4 @@ public class OutputView {
         System.out.println(TOTAL_PRICE_MESSAGE);
     }
 
-    public static void printExcessQuantity(){
-        System.out.println(EXCESS_QUANTITY_MESSAGE+"\n");
-    }
 }

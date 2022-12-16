@@ -1,6 +1,7 @@
 package controller;
 
 import domain.*;
+import exception.PosException;
 import view.InputView;
 import view.OutputView;
 
@@ -20,6 +21,7 @@ public class PosController {
     public static final int PAY = 2;
     public static final int QUIT = 3;
     public static boolean isRunning = true;
+    public static PosException posException = new PosException();
 
     public void start(){
         while(isRunning){
@@ -50,19 +52,16 @@ public class PosController {
         if(OrderRepository.checkTotalQuantity(tableNumber,menuQuantity)){
             orders = OrderRepository.saveOrder(tableNumber,new Order(menu,menuQuantity));
         }
-        if(!OrderRepository.checkTotalQuantity(tableNumber,menuQuantity)){
-            outputView.printExcessQuantity();
-            start();
-        }
     }
     public void makePayment(){
         outputView.printTables(tables);
         int tableNumber = inputView.inputTableNumber();
+        posException.validPayment(orders,tableNumber);
         outputView.printTotalOrders();
         OrderRepository.printAllOrders(tableNumber);
         int payment = inputView.inputPaymentMethod();
         outputView.printTotalPrice();
         System.out.println(totalPrice.calculateTotalPrice(orders.get(tableNumber), payment)+"\n");
-
+        orders.remove(tableNumber);
     }
 }
